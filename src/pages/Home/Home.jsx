@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import Swipper from "../../components/Swipper";
 
 const Home = () => {
     return (
@@ -6,7 +7,7 @@ const Home = () => {
              <Helmet>
                 <title>DineDash | Home</title>
             </Helmet>
-            <h2>home</h2>
+            <Swipper></Swipper>
         </div>
     );
 };
