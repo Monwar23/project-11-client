@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -67,6 +68,10 @@ const Register = () => {
     }
 
     return (
+       <div>
+         <Helmet>
+                <title>DineDash | SignUp</title>
+            </Helmet>
         <div className="flex w-full max-w-sm mx-auto my-16 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
             <div className="hidden lg:block lg:w-1/2">
                 <img src="https://i.ibb.co/6cMNPh7/pexels-pixabay-260922.jpg" alt="Background" className="object-cover w-full h-full" />
@@ -145,6 +150,7 @@ const Register = () => {
                 <ToastContainer></ToastContainer>
             </div>
         </div>
+       </div>
     );
 };
 
