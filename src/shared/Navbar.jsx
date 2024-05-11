@@ -11,15 +11,15 @@ const Navbar = () => {
 
     const navLinks = <>
         <li><NavLink className={({ isActive }) =>
-            isActive ? 'text-blue-600 border border-blue-600 font-semibold' : 'font-semibold'
+            isActive ? 'text-rose-400 border border-rose-400 font-semibold' : 'font-semibold'
         } to="/">Home</NavLink></li>
 
         <li><NavLink className={({ isActive }) =>
-            isActive ? 'text-blue-600 border border-blue-600 font-semibold' : 'font-semibold'
+            isActive ? 'text-rose-400 border border-rose-400 font-semibold' : 'font-semibold'
         } to="/allFoods">All Foods</NavLink></li>
 
         <li><NavLink className={({ isActive }) =>
-            isActive ? 'text-blue-600 border border-blue-600 font-semibold' : 'font-semibold'
+            isActive ? 'text-rose-400 border border-rose-400 font-semibold' : 'font-semibold'
         } to="/gallery">Gallery</NavLink></li>
     </>
 
@@ -34,7 +34,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl "><span className="font-bold text-blue-600 -mr-2">Art</span>Hive</Link>
+                <Link to="/" className="btn btn-ghost text-xl "><span className="font-bold text-rose-400 -mr-2">Dine</span>Dash</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -86,14 +86,13 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <>
-                        <Link to="/login" className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group mr-3">
-                            <span className="w-48 h-48 rounded rotate-[-40deg] bg-blue-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                            <span className="relative w-full text-left text-blue-600 font-bold transition-colors duration-300 ease-in-out group-hover:text-white">Login</span>
+                        <Link to='/login'>
+                        <button className="btn btn-outline text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none mr-3 px-6">Login</button>
                         </Link>
-                        <Link to="/register" className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group">
-                            <span className="w-48 h-48 rounded rotate-[-40deg] bg-blue-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                            <span className="relative w-full text-left text-blue-600 font-bold transition-colors duration-300 ease-in-out group-hover:text-white">Register</span>
+                        <Link to='/register'>
+                        <button className="btn btn-outline text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none">Register</button>
                         </Link>
+                       
                     </>
                 )}
                 {/* <label className="cursor-pointer grid place-items-center ml-3">
