@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import UseAuth from "../Hooks/UseAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -8,9 +8,11 @@ import { useState } from "react";
 
 const Register = () => {
 
-    const { createUser } = UseAuth()
+    const { createUser,googleLogin,
+        gitHubLogin } = UseAuth()
     const location = useLocation()
     const navigate = useNavigate()
+    const from = location?.state || "/";
 
     const {
         register,
@@ -48,8 +50,24 @@ const Register = () => {
             })
     }
 
+    const handleSocialSignIn = (socialProvider) => {
+        socialProvider()
+            .then(result => {
+                console.log(result.user);
+                toast.success("Registration successful!");
+                setTimeout(()=>{
+                    navigate(from)
+                },3000)
+               
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message)
+            })
+    }
+
     return (
-        <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+        <div className="flex w-full max-w-sm mx-auto my-16 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
             <div className="hidden lg:block lg:w-1/2">
                 <img src="https://i.ibb.co/6cMNPh7/pexels-pixabay-260922.jpg" alt="Background" className="object-cover w-full h-full" />
             </div>
@@ -60,7 +78,7 @@ const Register = () => {
                     Sign Up Now !
                 </p>
 
-                <a href="#" className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-rose-400 hover:text-white">
+                <button onClick={()=>handleSocialSignIn(googleLogin)} className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-rose-400 hover:text-white w-full">
 
                     <div className="px-4 py-2">
                         <svg className="w-6 h-6" viewBox="0 0 40 40">
@@ -71,7 +89,16 @@ const Register = () => {
                         </svg>
                     </div>
                     <span className="w-5/6 px-4 py-3 font-bold text-center ">Sign Up with Google</span>
-                </a>
+                </button>
+                <button onClick={()=>handleSocialSignIn(gitHubLogin)} className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-rose-400 hover:text-white w-full">
+
+                    <div className="px-4 py-2">
+                    <div className="text-xl">
+                    <FaGithub />
+                    </div>
+                    </div>
+                    <span className="w-5/6 px-4 py-3 font-bold text-center ">Sign Up with GitHub</span>
+                </button>
 
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
@@ -80,22 +107,22 @@ const Register = () => {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
                     <div className="mb-4">
-                        <label className="text-white">Name</label>
+                        <label className="">Name</label>
                         <input type="text" placeholder="Name" className="input input-bordered w-full" {...register("Name", { required: true })} />
                         {errors.Name && <span className="text-red-500">This field is required</span>}
                     </div>
                     <div className="mb-4">
-                        <label className="text-white">Photo URL</label>
+                        <label className="">Photo URL</label>
                         <input type="text" placeholder="Photo URL" className="input input-bordered w-full" {...register("image", { required: true })} />
                         {errors.image && <span className="text-red-500">This field is required</span>}
                     </div>
                     <div className="mb-4">
-                        <label className="text-white">Email</label>
+                        <label className="">Email</label>
                         <input type="email" placeholder="Email" className="input input-bordered w-full" {...register("email", { required: true })} />
                         {errors.email && <span className="text-red-500">This field is required</span>}
                     </div>
                     <div className="mb-4 relative">
-                        <label className="text-white">Password</label>
+                        <label className="">Password</label>
                         <input type={showPassword ? "text" : "password"} placeholder="Password" className="input input-bordered w-full pr-10" {...register("password", { required: true })} />
                         <button className="absolute inset-y-12 right-0 flex items-center pr-3 focus:outline-none" onClick={() => setShowPassword(!showPassword)}>
                             {showPassword ? <FaEyeSlash className="text-black" /> : <FaEye className="text-black" />}
