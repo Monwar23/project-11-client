@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
+import { MdFoodBank } from "react-icons/md";
 
 const Navbar = () => {
     const { user, logOut } = UseAuth()
@@ -33,6 +34,9 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         {navLinks}
                     </ul>
+                </div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+                <MdFoodBank />
                 </div>
                 <Link to="/" className="btn btn-ghost text-xl "><span className="font-bold text-rose-400 -mr-2">Dine</span>Dash</Link>
             </div>
