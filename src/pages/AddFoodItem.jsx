@@ -3,12 +3,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UseAuth from "../Hooks/UseAuth";
 import { Fade } from "react-awesome-reveal";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 const AddFoodItem = () => {
 
     const { user } = UseAuth() || {}
+    const location = useLocation()
+    const navigate = useNavigate()
 
-    const handleAddFood = e => {
+    const handleAddFood =async e => {
         e.preventDefault()
 
         const form = e.target;
@@ -26,22 +31,23 @@ const AddFoodItem = () => {
         const info = { food_image, food_name, food_category, short_description, Quantity, price, food_origin,  email, name }
         console.log(info);
 
-        fetch('https://project-10-server-gray.vercel.app/addArt&Craft', {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(info)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data?.insertedId) {
-                    toast('Food Item Added Successfully')
-                }
-                form.reset()
-            })
+        try {
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_APP_URL}/addFoods`,
+              info
+            )
+            console.log(data)
+            toast.success('Food Item Added Successfully!')
+            setTimeout(() => {
+                navigate(location?.state ? location.state : '/myAddedFoodItem')
+            }, 3000)
+
+          }
+          catch (err) {
+            console.log(err)
+          }
 
     }
-
-
 
 
     return (
@@ -65,7 +71,7 @@ const AddFoodItem = () => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="food_category" className="block font-medium text-rose-400">Food Category</label>
-                            <input type="url" id="food_category" name="food_category" placeholder="Food Category" className="mt-1 block w-full rounded-md border-4 border-rose-400 shadow-sm h-10 px-2" />
+                            <input type="text" id="food_category" name="food_category" placeholder="Food Category" className="mt-1 block w-full rounded-md border-4 border-rose-400 shadow-sm h-10 px-2" />
                         </div>
                         
                         <div className="mb-3">
