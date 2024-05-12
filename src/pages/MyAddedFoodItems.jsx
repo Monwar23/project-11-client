@@ -6,11 +6,13 @@ import { BsPencilSquare, BsTrash } from "react-icons/bs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyAddedFoodItems = () => {
 
     const [foods, setFoods] = useState([]);
     const { user } = UseAuth()
+    const [control,setControl]=useState(false)
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_APP_URL}/foods/email/${user?.email}`)
@@ -18,7 +20,7 @@ const MyAddedFoodItems = () => {
             .then(data => {
                 setFoods(data);
             });
-    }, [user]);
+    }, [user,control]);
 
     const handleDelete = _id => {
         Swal.fire({
@@ -33,7 +35,7 @@ const MyAddedFoodItems = () => {
           if (result.isConfirmed) {
     
     
-            fetch(`https://project-10-server-gray.vercel.app/craftSection/${_id}`,{
+            fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}`,{
               method:'DELETE'
             })
               .then(res => res.json())
@@ -77,7 +79,9 @@ const MyAddedFoodItems = () => {
                                     </button>
                                 </Link>
 
-                                    <button className="text-red-500 hover:text-red-600 transition duration-300">
+                                    <button onClick={()=>{
+                                        handleDelete(food._id)
+                                    }} className="text-red-500 hover:text-red-600 transition duration-300">
                                         <BsTrash />
                                         <span className="tooltip">Delete</span>
                                     </button>
