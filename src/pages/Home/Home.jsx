@@ -3,6 +3,7 @@ import Swipper from "../../components/Swipper";
 import { useEffect, useState } from "react";
 import FoodCard from "../../components/FoodCard";
 import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
     const [foods, setFoods] = useState([]);
@@ -22,6 +23,12 @@ const Home = () => {
                 <title>DineDash | Home</title>
             </Helmet>
             <Swipper></Swipper>
+            <Fade>
+                <div className="mt-10">
+                    <h2 className="text-3xl text-rose-400 font-bold text-center">Top Foods ! </h2>
+                    <p className="text-center mt-4"> Explore the best in food! From timeless favorites to exciting new flavors, our Top Food section is your <br /> go-to for culinary inspiration and delicious discoveries. </p>
+                </div>
+            </Fade>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-10">
                 {
                     foods.slice(0,6).map(food => <FoodCard key={food._id} food={food}></FoodCard>)
