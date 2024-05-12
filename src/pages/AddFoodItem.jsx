@@ -49,7 +49,6 @@ const AddFoodItem = () => {
 
     }
 
-
     return (
         <div>
             <Helmet>
