@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import Swipper from "../../components/Swipper";
 import { useEffect, useState } from "react";
 import FoodCard from "../../components/FoodCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const [foods, setFoods] = useState([]);
@@ -26,6 +27,14 @@ const Home = () => {
                     foods.slice(0,6).map(food => <FoodCard key={food._id} food={food}></FoodCard>)
                     
                 }
+            </div>
+            <div className="mb-10 flex justify-center">
+            <Link
+              to='/allFoods'
+              className='px-5 py-3 rounded-lg text-sm font-medium border border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none'
+            >
+              See All Foods
+            </Link>
             </div>
         </div>
     );
