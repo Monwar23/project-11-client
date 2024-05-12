@@ -34,7 +34,7 @@ const AddFoodItem = () => {
             .then(res => res.json())
             .then(data => {
                 if (data?.insertedId) {
-                    toast('Craft Item Added Successfully')
+                    toast('Food Item Added Successfully')
                 }
                 form.reset()
             })
