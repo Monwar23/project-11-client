@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
@@ -8,7 +9,8 @@ const FoodCard = ({ food }) => {
         Quantity);
     const uniqueTextColor = '#ff9900';
     return (
-        <div className="food-card rounded-xl overflow-hidden shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1">
+        <Fade>
+            <div className="food-card rounded-xl overflow-hidden shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1">
             <img src={food_image} alt={food_name} className="w-full h-72" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 text-rose-400">{food_name}</div>
@@ -25,6 +27,7 @@ const FoodCard = ({ food }) => {
                 </button>
             </Link>
         </div>
+        </Fade>
     );
 };
 

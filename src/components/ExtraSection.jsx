@@ -1,7 +1,7 @@
-
+import "animate.css";
 const ExtraSection = () => {
     return (
-        <section className="bg-white dark:bg-gray-900 my-10">
+        <section className="bg-white dark:bg-gray-900 my-10 animate__animated animate__fadeInLeft">
         <div className="relative flex">
             <div className="min-h-screen lg:w-1/3"></div>
             <div className="hidden w-3/4 min-h-screen bg-gray-100 dark:bg-gray-800 lg:block"></div>

@@ -12,6 +12,7 @@ import Update from "../pages/Update";
 import PrivateRoutes from "./PrivateRoutes";
 import Details from "../pages/Details";
 import Purchase from "../pages/Purchase";
+import Gallery from "../pages/Gallery";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +66,11 @@ const router = createBrowserRouter([
             element:<PrivateRoutes><Purchase></Purchase></PrivateRoutes>,
             loader:({params})=>fetch(`${import.meta.env.VITE_APP_URL}/foods/${params.id}`)
         },
+        {
+            path:'/gallery',
+            element:<Gallery></Gallery>,
+        },
+      
       
       ]
     },
