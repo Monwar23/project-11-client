@@ -55,12 +55,11 @@ const Details = () => {
             </div> Made by: {name}
           </li>
           <li className="flex justify-center items-center">
-          <Link>
+          <Link to={`/purchase/${_id}`}>
        <button className="text-rose-400 py-2 px-3 rounded-lg my-3 hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400">Purchase Now</button>
        </Link>
           </li>
         </ul>
-       
       </div>
     </div>
   );
