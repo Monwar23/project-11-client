@@ -16,7 +16,7 @@ const PurchaseCard = ({ food }) => {
       <img src={purchase_food_image} alt={purchase_food_name} className="w-full h-72 object-cover" />
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2 text-rose-400">{purchase_food_name}</h2>
-        <p className="text-gray-600 mb-2"><strong>Buying Date:</strong> {buyingDate}</p>
+        <p className="text-gray-600 mb-2"><strong>Buying Date:</strong> {new Date(buyingDate).toLocaleDateString()}</p>
         <p className="text-gray-600 mb-2"><strong>Price:</strong> ${purchase_price}</p>
         <p className="text-gray-600 mb-2"><strong>Origin:</strong> {purchase_food_origin}</p>
         <p className="text-gray-600 mb-2"><strong>Made by:</strong> {made_name}</p>
