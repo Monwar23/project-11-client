@@ -45,6 +45,7 @@ const AddFoodItem = () => {
           }
           catch (err) {
             console.log(err)
+            toast.err(err.message)
           }
 
     }

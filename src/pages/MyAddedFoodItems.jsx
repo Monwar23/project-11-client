@@ -20,6 +20,7 @@ const MyAddedFoodItems = () => {
             .then(data => {
                 setFoods(data);
             });
+            
     }, [user,control]);
 
     const handleDelete = _id => {

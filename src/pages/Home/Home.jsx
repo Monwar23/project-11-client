@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import FoodCard from "../../components/FoodCard";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import ExtraSection from "../../components/ExtraSection";
+import ExtraSection2 from "../../components/ExtraSection2";
+import ExtraSection3 from "../../components/ExtraSection3";
 
 const Home = () => {
     const [foods, setFoods] = useState([]);
@@ -43,6 +46,9 @@ const Home = () => {
               See All Foods
             </Link>
             </div>
+            <ExtraSection></ExtraSection>
+        <ExtraSection2></ExtraSection2>
+        <ExtraSection3></ExtraSection3>
         </div>
     );
 };
