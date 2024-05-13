@@ -8,8 +8,7 @@ import { useState } from "react";
 
 const Purchase = () => {
 
-    const [buyingDate, setBuyingDate] = useState(Date.now()); // Initial buying date is set to current date and time
-
+    const [buyingDate, setBuyingDate] = useState(Date.now()); 
 
     const { user } = UseAuth() 
     const food = useLoaderData();
@@ -18,8 +17,12 @@ const Purchase = () => {
 
     const {
         food_name,
+        food_image,
+        food_origin,
         price,
         Quantity,
+        name,
+        email
     } = food;
 
     const handleSubmit = async (e) => {
@@ -28,10 +31,14 @@ const Purchase = () => {
         const purchase_food_name = form.food_name.value
         const purchaseQuantity = form.purchaseQuantity.value
         const purchase_price = form.price.value
-          const email = user.email
-        const name = user.displayName
+          const purchaseEmail = user.email
+        const purchase_name = user.displayName
+        const purchase_food_image=food_image
+        const purchase_food_origin=food_origin
+        const purchase_email=email
+        const made_name=name
 
-        const info = { purchase_food_name,purchase_price,purchaseQuantity, email, name, buyingDate, }
+        const info = { purchase_food_name,purchase_price,purchaseQuantity, purchaseEmail, made_name, buyingDate,purchase_food_image,purchase_food_origin,purchase_email,purchase_name }
         console.log(info);
         try {
             const { data } = await axios.post(
@@ -42,12 +49,13 @@ const Purchase = () => {
             toast.success('purchase Successfully!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/myPurchaseFoodItem')
-            }, 3000)
-
+            }, 3000) 
           }
           catch (err) {
             console.log(err)
           }
+
+       
     }
 
     return (
