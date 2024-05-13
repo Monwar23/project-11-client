@@ -5,10 +5,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const Purchase = () => {
 
-    const [buyingDate, setBuyingDate] = useState(Date.now()); 
+    const [startDate, setStartDate] = useState(new Date()); 
 
     const { user } = UseAuth() 
     const food = useLoaderData();
@@ -27,18 +30,20 @@ const Purchase = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(user?.email===email) return toast.error('Action not permitted')
         const form = e.target;
         const purchase_food_name = form.food_name.value
         const purchaseQuantity = form.purchaseQuantity.value
+        if(purchaseQuantity>parseFloat(Quantity)) return toast.error(`You have Purchase maximum ${Quantity} food.`)
         const purchase_price = form.price.value
           const purchaseEmail = user.email
         const purchase_name = user.displayName
         const purchase_food_image=food_image
         const purchase_food_origin=food_origin
-        const purchase_email=email
         const made_name=name
+        const buyingDate=startDate
 
-        const info = { purchase_food_name,purchase_price,purchaseQuantity, purchaseEmail, made_name, buyingDate,purchase_food_image,purchase_food_origin,purchase_email,purchase_name }
+        const info = { purchase_food_name,purchase_price,purchaseQuantity, purchaseEmail, made_name, buyingDate,purchase_food_image,purchase_food_origin,purchase_name }
         console.log(info);
         try {
             const { data } = await axios.post(
@@ -54,7 +59,6 @@ const Purchase = () => {
           catch (err) {
             console.log(err)
           }
-
        
     }
 
@@ -86,14 +90,15 @@ const Purchase = () => {
                             >
                                 Buying Date
                             </label>
-                            <input
+                            {/* <input
                                 type="date"
                                 id="buyingDate"
                                 name="buyingDate"
                                 value={new Date(buyingDate).toISOString().split('T')[0]} 
                                 onChange={(e) => setBuyingDate(new Date(e.target.value).getTime())} 
                                 className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400"
-                            />
+                            /> */}
+                                <DatePicker className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="name" className="block font-medium text-rose-400">User Name</label>
