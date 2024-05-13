@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             element:<PrivateRoutes><AddFoodItem></AddFoodItem></PrivateRoutes>
         },
         {
-            path:'/myOrderedFoodItem',
+            path:'/myPurchaseFoodItem',
             element:<PrivateRoutes><OrderedFoodItem></OrderedFoodItem></PrivateRoutes>
         },
         {

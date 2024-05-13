@@ -2,6 +2,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { FaTag, FaDollarSign, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   const food = useLoaderData();
@@ -18,6 +19,10 @@ const Details = () => {
   } = food;
 
   return (
+   <div>
+     <Helmet>
+                <title>DineDash | Food Details</title>
+            </Helmet>
     <div className="card my-10">
       <img
         src={food_image}
@@ -56,12 +61,13 @@ const Details = () => {
           </li>
           <li className="flex justify-center items-center">
           <Link to={`/purchase/${_id}`}>
-       <button className="text-rose-400 py-2 px-3 rounded-lg my-3 hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400">Purchase Now</button>
+       <button className="text-rose-400 py-2 px-3 rounded-lg my-3 hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400">Purchase</button>
        </Link>
           </li>
         </ul>
       </div>
     </div>
+   </div>
   );
 };
 

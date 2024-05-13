@@ -12,7 +12,7 @@ const AllFood = () => {
             .then(res => res.json())
             .then(data => {
                 setFoods(data)
-
+ 
             })
     }, [])
     useEffect(() => {

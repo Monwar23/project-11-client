@@ -82,7 +82,7 @@ const Navbar = () => {
                             <li>
                                 <NavLink className={({ isActive }) =>
                                     isActive ? 'text-rose-400 border border-rose-400 font-semibold' : 'font-semibold'
-                                } to='/myOrderedFoodItem'>My Ordered Food Items</NavLink>
+                                } to='/myPurchaseFoodItem'>My Purchase Food Items</NavLink>
                             </li>
                             <li className='mt-2'>
                                 <button

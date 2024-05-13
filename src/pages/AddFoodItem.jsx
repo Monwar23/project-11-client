@@ -62,7 +62,7 @@ const AddFoodItem = () => {
                         
                         <div className="mb-3">
                             <label htmlFor="food_name" className="block font-medium text-rose-400">Food Name</label>
-                            <input type="text" id="food_name" name="food_name" placeholder="Item Name" required className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
+                            <input type="text" id="food_name" name="food_name" placeholder="Food Name" required className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="food_image" className="block font-medium text-rose-400">Food Image</label>
@@ -78,7 +78,7 @@ const AddFoodItem = () => {
                             <input type="number" id="Quantity" name="Quantity" placeholder="Quantity" required step="0.01" className="mt-1 block w-full  rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="price" className="block font-medium text-rose-400">price</label>
+                            <label htmlFor="price" className="block font-medium text-rose-400">Price</label>
                             <input type="number" id="price" name="price" placeholder="Price" step="0.1" className="mt-1 block w-full  rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
                         </div>
                         
