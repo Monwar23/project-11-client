@@ -54,8 +54,9 @@ const router = createBrowserRouter([
 
         },
         {
-            path:'/details',
+            path:'/details/:id',
             element:<Details></Details>,
+            loader:({params})=>fetch(`${import.meta.env.VITE_APP_URL}/foods/${params.id}`)
 
         },
       
