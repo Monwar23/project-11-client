@@ -4,8 +4,12 @@ import { Helmet } from "react-helmet";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useState } from "react";
 
 const Purchase = () => {
+
+    const [buyingDate, setBuyingDate] = useState(Date.now()); // Initial buying date is set to current date and time
+
 
     const { user } = UseAuth() 
     const food = useLoaderData();
@@ -13,7 +17,6 @@ const Purchase = () => {
     const navigate = useNavigate()
 
     const {
-        _id,
         food_name,
         price,
         Quantity,
@@ -28,7 +31,7 @@ const Purchase = () => {
           const email = user.email
         const name = user.displayName
 
-        const info = { purchase_food_name,purchase_price,purchaseQuantity, email, name }
+        const info = { purchase_food_name,purchase_price,purchaseQuantity, email, name, buyingDate, }
         console.log(info);
         try {
             const { data } = await axios.post(
@@ -67,6 +70,22 @@ const Purchase = () => {
                         <div className="mb-3">
                             <label htmlFor="Quantity" className="block font-medium text-rose-400">Quantity</label>
                             <input type="number" id="Quantity" name="purchaseQuantity" placeholder="Quantity" required step="0.01" className="mt-1 block w-full  rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
+                        </div>
+                        <div className="mb-3">
+                            <label
+                                htmlFor="buyingDate"
+                                className="block font-medium text-rose-400"
+                            >
+                                Buying Date
+                            </label>
+                            <input
+                                type="date"
+                                id="buyingDate"
+                                name="buyingDate"
+                                value={new Date(buyingDate).toISOString().split('T')[0]} 
+                                onChange={(e) => setBuyingDate(new Date(e.target.value).getTime())} 
+                                className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400"
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="name" className="block font-medium text-rose-400">User Name</label>
