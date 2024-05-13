@@ -36,7 +36,7 @@ const Purchase = () => {
         const purchaseQuantity = form.purchaseQuantity.value
         if(purchaseQuantity>parseFloat(Quantity)) return toast.error(`You have Purchase maximum ${Quantity} food.`)
         const purchase_price = form.price.value
-          const purchaseEmail = user.email
+        const purchaseEmail = user.email
         const purchase_name = user.displayName
         const purchase_food_image=food_image
         const purchase_food_origin=food_origin

@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import PurchaseCard from "../components/PurchaseCard";
+import UseAuth from "../Hooks/UseAuth";
+
 
 const OrderedFoodItem = () => {
 
-    const [foods, setFoods] = useState([])
+    const [foods, setFoods] = useState([]);
+    const { user } = UseAuth()
+    // const [control,setControl]=useState(false)
+
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_APP_URL}/purchase`)
+        fetch(`${import.meta.env.VITE_APP_URL}/purchase/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                setFoods(data)
- 
-            })
-    }, [])
+                setFoods(data);
+            });
+    }, [user]);
 
     return (
         <div>
