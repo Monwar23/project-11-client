@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation, useNavigate,} from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate, } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 import { Helmet } from "react-helmet";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,9 +11,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Purchase = () => {
 
-    const [startDate, setStartDate] = useState(new Date()); 
+    const [startDate, setStartDate] = useState(new Date());
 
-    const { user } = UseAuth() 
+    const { user } = UseAuth()
     const food = useLoaderData();
     const location = useLocation()
     const navigate = useNavigate()
@@ -30,36 +30,36 @@ const Purchase = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(user?.email===email) return toast.error('Action not permitted')
+        if (user?.email === email) return toast.error('Action not permitted')
         const form = e.target;
         const purchase_food_name = form.food_name.value
         const purchaseQuantity = form.purchaseQuantity.value
-        if(purchaseQuantity>parseFloat(Quantity)) return toast.error(`You have Purchase maximum ${Quantity} food.`)
+        if (purchaseQuantity > parseFloat(Quantity)) return toast.error(`You have Purchase maximum ${Quantity} food.`)
         const purchase_price = form.price.value
         const purchaseEmail = user.email
         const purchase_name = user.displayName
-        const purchase_food_image=food_image
-        const purchase_food_origin=food_origin
-        const made_name=name
-        const buyingDate=startDate
+        const purchase_food_image = food_image
+        const purchase_food_origin = food_origin
+        const made_name = name
+        const buyingDate = startDate
 
-        const info = { purchase_food_name,purchase_price,purchaseQuantity, purchaseEmail, made_name, buyingDate,purchase_food_image,purchase_food_origin,purchase_name }
+        const info = { purchase_food_name, purchase_price, purchaseQuantity, purchaseEmail, made_name, buyingDate, purchase_food_image, purchase_food_origin, purchase_name }
         console.log(info);
         try {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_APP_URL}/purchase`,
-              info
+                info
             )
             console.log(data)
             toast.success('purchase Successfully!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/myPurchaseFoodItem')
-            }, 3000) 
-          }
-          catch (err) {
+            }, 3000)
+        }
+        catch (err) {
             console.log(err)
-          }
-       
+        }
+
     }
 
     return (
@@ -90,15 +90,8 @@ const Purchase = () => {
                             >
                                 Buying Date
                             </label>
-                            {/* <input
-                                type="date"
-                                id="buyingDate"
-                                name="buyingDate"
-                                value={new Date(buyingDate).toISOString().split('T')[0]} 
-                                onChange={(e) => setBuyingDate(new Date(e.target.value).getTime())} 
-                                className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400"
-                            /> */}
-                                <DatePicker className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" selected={startDate} onChange={(date) => setStartDate(date)} />
+
+                            <DatePicker className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="name" className="block font-medium text-rose-400">User Name</label>
@@ -111,9 +104,18 @@ const Purchase = () => {
                         </div>
                     </div>
 
-                    <div className="mb-3 flex justify-center">
-                        <button type="submit" className="px-5 py-3 rounded-lg text-sm font-medium text-white bg-rose-400 hover:bg-rose-300 mt-10">Purchase Now</button>
-                    </div>
+                    {Quantity > 0 ? (
+                        <div className="mb-3 flex justify-center">
+                            <button type="submit" className="px-5 py-3 rounded-lg text-sm font-medium text-white bg-rose-400 hover:bg-rose-300 mt-10">Purchase Now</button>
+                        </div>
+                    ) : (
+                        <div className="text-center mt-2">
+                            <h2 className="text-red-600">This Food is not Available</h2>
+                            <div className=" flex justify-center">
+                            <button type="button" disabled className="px-5 py-3 rounded-lg text-sm font-medium text-white bg-gray-400 mb-10 mt-4">Out of Stock</button>
+                            </div>
+                        </div>
+                    )}
                 </form>
             </div >
             <ToastContainer></ToastContainer>
