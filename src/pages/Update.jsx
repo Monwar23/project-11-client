@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Update = () => {
     const foods=useLoaderData()
-    // console.log('food data',foods);
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const {
         _id,
@@ -40,6 +41,9 @@ const Update = () => {
             .then(data => {
                 if (data?.modifiedCount > 0) {
                     toast('Food Item Updated Successfully')
+                    setTimeout(() => {
+                        navigate(location?.state ? location.state : '/myAddedFoodItem')
+                    }, 3000)
                 }
             })
     }
