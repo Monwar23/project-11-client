@@ -68,9 +68,11 @@ const Purchase = () => {
                 <title>DineDash | Purchase</title>
             </Helmet>
             <div>
-                <h2 className="text-2xl font-bold mb-4 my-10 text-rose-400 text-center">Purchase Food </h2>
+            <div className="bg-cover h-32 bg-center mt-10 mb-10 flex items-center justify-center rounded-xl opacity-85" style={{ backgroundImage: "url('https://i.ibb.co/9HLjhGV/pexels-solliefoto-299347.jpg')" }}>
+                <h2 className="text-rose-600 text-4xl font-bold">Purchase Food Now !</h2>
+            </div>
                 <form onSubmit={handleSubmit} >
-                    <div className="grid lg:grid-cols-2 gap-x-10">
+                    <div className="grid lg:grid-cols-2 gap-x-10 px-4">
                         <div className="mb-3">
                             <label htmlFor="food_name" className="block font-medium text-rose-400">Food Name</label>
                             <input type="text" id="food_name" name="food_name" placeholder="Food Name" readOnly defaultValue={food_name} required className="mt-1 block w-full rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
@@ -106,7 +108,7 @@ const Purchase = () => {
 
                     {Quantity > 0 ? (
                         <div className="mb-3 flex justify-center">
-                            <button type="submit" className="px-5 py-3 rounded-lg text-sm font-medium text-white bg-rose-400 hover:bg-rose-300 mt-10">Purchase Now</button>
+                            <button type="submit" className="px-5 py-3 rounded-lg text-sm font-medium text-white bg-rose-400 hover:bg-rose-300 mt-4 mb-10">Purchase Now</button>
                         </div>
                     ) : (
                         <div className="text-center mt-2">

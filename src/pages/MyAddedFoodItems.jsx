@@ -59,6 +59,9 @@ const MyAddedFoodItems = () => {
             <Helmet>
                 <title>DineDash | MyAddedFoodItem</title>
             </Helmet>
+            <div className="bg-cover h-32 bg-center mt-10 flex items-center justify-center rounded-xl opacity-85" style={{ backgroundImage: "url('https://i.ibb.co/9HLjhGV/pexels-solliefoto-299347.jpg')" }}>
+                <h2 className="text-rose-600 text-4xl font-bold">My Added Food Items</h2>
+            </div>
             <Fade>
                 <div className="my-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {foods.map((food, index) => (
