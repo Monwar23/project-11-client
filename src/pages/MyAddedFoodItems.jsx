@@ -15,7 +15,7 @@ const MyAddedFoodItems = () => {
     const [control,setControl]=useState(false)
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_APP_URL}/foods/email/${user?.email}`)
+        fetch(`${import.meta.env.VITE_APP_URL}/foods/email/${user?.email}`,{credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 setFoods(data);
@@ -36,7 +36,7 @@ const MyAddedFoodItems = () => {
           if (result.isConfirmed) {
     
     
-            fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}`,{
+            fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}`,{credentials:'include'},{
               method:'DELETE'
             })
               .then(res => res.json())

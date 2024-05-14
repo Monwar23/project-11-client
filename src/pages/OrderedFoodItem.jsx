@@ -13,7 +13,7 @@ const OrderedFoodItem = () => {
     const [control,setControl]=useState(false)
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_APP_URL}/purchase/${user?.email}`)
+        fetch(`${import.meta.env.VITE_APP_URL}/purchase/${user?.email}`,{credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 setFoods(data);

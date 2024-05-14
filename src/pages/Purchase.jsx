@@ -19,6 +19,7 @@ const Purchase = () => {
     const navigate = useNavigate()
 
     const {
+        _id,
         food_name,
         food_image,
         food_origin,
@@ -33,8 +34,8 @@ const Purchase = () => {
         if (user?.email === email) return toast.error('Action not permitted')
         const form = e.target;
         const purchase_food_name = form.food_name.value
-        const purchaseQuantity = form.purchaseQuantity.value
-        if (purchaseQuantity > parseFloat(Quantity)) return toast.error(`You have Purchase maximum ${Quantity} food.`)
+        const purchaseQuantity = parseInt(form.purchaseQuantity.value,10)
+        if (purchaseQuantity > parseFloat(Quantity)) return toast.error(`You have Purchase this food maximum ${Quantity} food.`)
         const purchase_price = form.price.value
         const purchaseEmail = user.email
         const purchase_name = user.displayName
@@ -42,8 +43,9 @@ const Purchase = () => {
         const purchase_food_origin = food_origin
         const made_name = name
         const buyingDate = startDate
+        const foodId=_id
 
-        const info = { purchase_food_name, purchase_price, purchaseQuantity, purchaseEmail, made_name, buyingDate, purchase_food_image, purchase_food_origin, purchase_name }
+        const info = { purchase_food_name, purchase_price, purchaseQuantity, purchaseEmail, made_name, buyingDate, purchase_food_image, purchase_food_origin, purchase_name,foodId }
         console.log(info);
         try {
             const { data } = await axios.post(

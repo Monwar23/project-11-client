@@ -21,14 +21,15 @@ const AddFoodItem = () => {
         const food_name = form.food_name.value
         const food_category = form.food_category.value
         const short_description = form.short_description.value
-        const Quantity = form.Quantity.value
+        const Quantity = parseInt(form.Quantity.value, 10)
         const price = form.price.value
        
         const food_origin = form.food_origin.value
         const email = user.email
         const name = user.displayName
+        const purchase_count=0
 
-        const info = { food_image, food_name, food_category, short_description, Quantity, price, food_origin,  email, name }
+        const info = { food_image, food_name, food_category, short_description, Quantity, price, food_origin,purchase_count,  email, name }
         console.log(info);
 
         try {
