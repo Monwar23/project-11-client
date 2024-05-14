@@ -1,16 +1,22 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import UseAuth from "../Hooks/UseAuth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GetGallery from "../components/GetGallery";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 
 const Gallery = () => {
+
+    const location = useLocation()
+    const navigate = useNavigate()
     const [modalOpen, setModalOpen] = useState(false);
     const [feedback, setFeedback] = useState("");
     const [imageUrl, setImageUrl] = useState("");
    
+
 
     const { user } = UseAuth();
 
@@ -37,15 +43,15 @@ const Gallery = () => {
     };
 
     const handleModalOpen = () => {
-        const isLoggedIn = true;
-        if (isLoggedIn) {
+        if (user) {
             setModalOpen(true);
         } else {
-            history.push('/login');
+            return navigate(location?.state ? location.state : '/login')
+
         }
     };
 
-   
+
 
 
     return (
@@ -57,15 +63,15 @@ const Gallery = () => {
                 <h2 className="text-white text-4xl font-bold">Gallery</h2>
             </div>
             <div className="flex justify-center">
-            <button className="px-5 py-3 rounded-lg text-sm font-medium border border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none mt-4 " onClick={handleModalOpen}>Add Feedback</button>
+                <button className="px-5 py-3 rounded-lg text-sm font-medium border border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none mt-4 " onClick={handleModalOpen}>Add Feedback</button>
             </div>
-           <GetGallery></GetGallery>
+            <GetGallery></GetGallery>
             {modalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded-md w-96">
                         <h2 className="text-lg font-bold mb-4 text-rose-400">Add Image and Feedback</h2>
                         <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
+                            <div className="mb-4">
                                 <label htmlFor="name" className="block text-sm font-bold text-rose-400">User Name:</label>
                                 <input type="text" id="imageUrl" className="w-full border border-rose-400 rounded-md p-2" defaultValue={user?.displayName} readOnly />
                             </div>
@@ -78,7 +84,7 @@ const Gallery = () => {
                                 <input type="url" id="imageUrl" className="w-full border border-rose-400 rounded-md p-2" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
                             </div>
                             <div className="flex justify-center">
-                            <button type="submit" className="px-5 py-3 rounded-lg text-sm font-medium border border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none">Submit</button>
+                                <button type="submit" className="px-5 py-3 rounded-lg text-sm font-medium border border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white hover:border-none">Submit</button>
                             </div>
                         </form>
                     </div>
