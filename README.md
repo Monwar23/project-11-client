@@ -1,6 +1,6 @@
 # DineDash
 
-## [DineDash](https://dinedash.netlify.app/)
+## Live URL : https://dinedash.netlify.app/
 
 - User-friendly navigation with a dynamic navbar showcasing website sections and conditional login/logout functionality.
 
