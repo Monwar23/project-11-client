@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
 
@@ -30,7 +31,12 @@ const Login = () => {
         const password=form.password.value
         try {
             const result=await signIn(email,password)
-            console.log(result.user)
+
+           
+            const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
             toast.success('SignIn Successful!')
             setTimeout(() => {
                             navigate(location?.state ? location.state : '/')
@@ -45,7 +51,12 @@ const Login = () => {
 
     const handleGoogleSignIn=async ()=>{
         try{
-            await googleLogin()
+          const result=  await googleLogin()
+         
+            const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
             
             toast.success('SignIn Successful!')
             setTimeout(() => {
@@ -60,7 +71,12 @@ const Login = () => {
 
     const handleGitHubSignIn=async ()=>{
         try{
-            await gitHubLogin()
+           const result= await gitHubLogin()
+           
+            const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
             toast.success('SignIn Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')

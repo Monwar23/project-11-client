@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Register = () => {
 
@@ -43,6 +44,12 @@ const Register = () => {
             const result=await createUser(email,password)
             await updateUserProfile(name,photo)
             setUser({ ...result?.user, photoURL: photo, displayName: name })
+
+            const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
+
             toast.success('SignUp Successful!')
             setTimeout(() => {
                             navigate(location?.state ? location.state : '/')
@@ -58,7 +65,12 @@ const Register = () => {
 
     const handleGoogleSignIn=async ()=>{
         try{
-            await googleLogin()
+            const result=await googleLogin()
+           
+            const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
             
             toast.success('SignUp Successful!')
             setTimeout(() => {
@@ -72,12 +84,17 @@ const Register = () => {
     }
     const handleGitHubSignIn=async ()=>{
         try{
-            await gitHubLogin()
+           const result= await gitHubLogin()
+           
+            const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
+                email:result?.user?.email,
+            },{withCredentials:true})
+            console.log(data);
             toast.success('SignUp Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
             }, 3000)
-            // toast.success('SignUp Successful!')
+            
         }
         catch (err) {
             console.log(err);

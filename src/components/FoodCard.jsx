@@ -5,8 +5,8 @@ const FoodCard = ({ food }) => {
 
     const {_id, food_name, food_image, food_category, price,
         Quantity } = food;
-    console.log(
-        Quantity);
+    // console.log(
+    //     Quantity);
     const uniqueTextColor = '#ff9900';
     return (
         <Fade>
