@@ -1,11 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import UseAuth from "../Hooks/UseAuth";
-import { ToastContainer, toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
 
@@ -70,8 +70,7 @@ const Register = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);
-            
+            console.log(data);   
             toast.success('SignUp Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
@@ -188,7 +187,6 @@ if(user || loading) return
                     <Link to='/login' className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign In</Link>
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                 </div>
-                <ToastContainer></ToastContainer>
             </div>
         </div>
        </div>

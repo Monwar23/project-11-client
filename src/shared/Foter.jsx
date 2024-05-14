@@ -16,7 +16,7 @@ const Foter = () => {
                 <div className="text-3xl h-8 font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
                 <MdFoodBank />
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl "><span className="font-bold text-rose-400 -mr-2">Dine</span>Dash</Link>
+                <Link to="/" className="btn btn-ghost text-xl "><span className="font-bold text-rose-600 -mr-2">Dine</span>Dash</Link>
                 </div>
 
                     <p className="max-w-sm mt-2 dark:text-gray-400 text-white ">Join 5,000+ other and never miss out on new foods, recipes, and more.</p>

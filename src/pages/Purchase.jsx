@@ -53,7 +53,7 @@ const Purchase = () => {
                 info
             )
             console.log(data)
-            toast.success('purchase Successfully!')
+            toast.success('purchase Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/myPurchaseFoodItem')
             }, 2000)
@@ -62,7 +62,6 @@ const Purchase = () => {
             console.log(err)
             toast.error(err.message)
         }
-
     }
 
     return (

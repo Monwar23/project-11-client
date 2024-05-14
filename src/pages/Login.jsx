@@ -1,11 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
 
@@ -31,8 +30,7 @@ const Login = () => {
         const password=form.password.value
         try {
             const result=await signIn(email,password)
-
-           
+     
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
@@ -61,7 +59,7 @@ const Login = () => {
             toast.success('SignIn Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
-            }, 3000)
+            }, 2000)
         }
         catch (err) {
             console.log(err);
@@ -80,7 +78,7 @@ const Login = () => {
             toast.success('SignIn Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
-            }, 3000)
+            }, 2000)
         }
         catch (err) {
             console.log(err);
@@ -160,7 +158,6 @@ return (
                     <Link to='/register' className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign In</Link>
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                 </div>
-                <ToastContainer></ToastContainer>
             </div>
         </div>
     </div>
