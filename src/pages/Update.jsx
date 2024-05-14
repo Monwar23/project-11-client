@@ -30,7 +30,7 @@ const Update = () => {
         const food_origin = form.food_origin.value
 
         const foodData = { food_name, food_image, food_category, price, Quantity, short_description, food_origin }
-        console.log(foodData);
+        // console.log(foodData);
 
         fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}` ,{
             method: "PUT",

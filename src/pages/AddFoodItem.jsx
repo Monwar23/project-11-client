@@ -30,14 +30,14 @@ const AddFoodItem = () => {
         const purchase_count=0
 
         const info = { food_image, food_name, food_category, short_description, Quantity, price, food_origin,purchase_count,  email, name }
-        console.log(info);
+        // console.log(info);
 
         try {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_APP_URL}/addFoods`,
               info
             )
-            console.log(data)
+            // console.log(data)
             toast.success('Food Item Added Successfully!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/myAddedFoodItem')
@@ -45,7 +45,7 @@ const AddFoodItem = () => {
 
           }
           catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.err(err.message)
           }
 
@@ -93,7 +93,7 @@ const AddFoodItem = () => {
                             <textarea id="short_description" name="short_description" placeholder="Short Description" required rows="3" className="mt-1 block w-full  rounded-md shadow-sm px-2 border-4 border-rose-400"></textarea>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="user_email" className="block font-medium text-rose-400">User Email</label>
+                            <label htmlFor="user_email" className="block font-medium text-rose-400">Email</label>
                             <input type="email" id="email" name="email" defaultValue={user.
                                 email} readOnly className="mt-1 block w-full  rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
                         </div>    
@@ -101,7 +101,7 @@ const AddFoodItem = () => {
                     </div>
                  
                   <div className="mb-3">
-                        <label htmlFor="name" className="block font-medium text-rose-400">User Name</label>
+                        <label htmlFor="name" className="block font-medium text-rose-400">Add By</label>
                         <input type="text" id="name" name="name" defaultValue={user.displayName} readOnly className="mt-1 block w-full  rounded-md shadow-sm h-10 px-2 border-4 border-rose-400" />
                   </div>
                     <div className="mb-3 flex justify-center">

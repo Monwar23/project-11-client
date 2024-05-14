@@ -13,6 +13,7 @@ const Purchase = () => {
 
     const [startDate, setStartDate] = useState(new Date());
 
+
     const { user } = UseAuth()
     const food = useLoaderData();
     const location = useLocation()
@@ -46,20 +47,20 @@ const Purchase = () => {
         const foodId=_id
 
         const info = { purchase_food_name, purchase_price, purchaseQuantity, purchaseEmail, made_name, buyingDate, purchase_food_image, purchase_food_origin, purchase_name,foodId }
-        console.log(info);
+        // console.log(info);
         try {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_APP_URL}/purchase`,
                 info
             )
-            console.log(data)
+            // console.log(data)
             toast.success('purchase Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/myPurchaseFoodItem')
             }, 2000)
         }
         catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error(err.message)
         }
     }

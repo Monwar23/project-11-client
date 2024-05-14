@@ -41,7 +41,7 @@ const AuthProvider = ({children}) => {
     const logOut = async() => {
         setLoading(true)
         const {data}=await axios(`${import.meta.env.VITE_APP_URL}/logout`,{withCredentials:true})
-        console.log(data);
+        // console.log(data);
         return signOut(auth)
     }
     const updateUserProfile = (name, photo) => {

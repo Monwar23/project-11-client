@@ -48,7 +48,7 @@ const Register = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);
+            // console.log(data);
 
             toast.success('SignUp Successful!')
             setTimeout(() => {
@@ -56,7 +56,7 @@ const Register = () => {
                         }, 3000)
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
             toast.error(err.message)
         }
         
@@ -70,14 +70,14 @@ const Register = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);   
+            // console.log(data);   
             toast.success('SignUp Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
             }, 3000)
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
             toast.error(err.message)
         }
     }
@@ -88,7 +88,7 @@ const Register = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);
+            // console.log(data);
             toast.success('SignUp Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
@@ -96,7 +96,7 @@ const Register = () => {
             
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
             toast.error(err.message)
         }
     }

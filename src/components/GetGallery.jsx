@@ -19,8 +19,8 @@ const GetGallery = () => {
             {
                 feedback.map((singleFeedback, index) => (
                     <div key={index} className="relative">
-                        <img className="image rounded-lg" src={singleFeedback.imageUrl} alt="Shoes" />
-                        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100 flex flex-col justify-center items-center">
+                        <img className="image h-full rounded-lg" src={singleFeedback.imageUrl} alt="Shoes" />
+                        <div className="absolute top-0 left-0 w-full h-full rounded-lg bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100 flex flex-col justify-center items-center">
                             <h2 className="text-white text-lg text-center font-bold">{singleFeedback.username}</h2>
                             <p className="text-white text-center">{singleFeedback.feedback}</p>
                         </div>

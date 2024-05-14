@@ -34,14 +34,14 @@ const Login = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);
+            // console.log(data);
             toast.success('SignIn Successful!')
             setTimeout(() => {
                             navigate(location?.state ? location.state : '/')
                         }, 2000)
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
             toast.error(err?.message)
         }
         
@@ -54,7 +54,7 @@ const Login = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);
+            // console.log(data);
             
             toast.success('SignIn Successful!')
             setTimeout(() => {
@@ -62,7 +62,7 @@ const Login = () => {
             }, 2000)
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
             toast.error(err.message)
         }
     }
@@ -74,14 +74,14 @@ const Login = () => {
             const {data}=await axios.post(`${import.meta.env.VITE_APP_URL}/jwt`,{
                 email:result?.user?.email,
             },{withCredentials:true})
-            console.log(data);
+            // console.log(data);
             toast.success('SignIn Successful!')
             setTimeout(() => {
                 navigate(location?.state ? location.state : '/')
             }, 2000)
         }
         catch (err) {
-            console.log(err);
+            // console.log(err);
             toast.error(err.message)
         }
     }
