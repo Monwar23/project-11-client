@@ -2,6 +2,9 @@
 
 ## Live URL : https://dinedash.netlify.app/
 
+
+## Features :
+
 - User-friendly navigation with a dynamic navbar showcasing website sections and conditional login/logout functionality.
 
 - Engaging homepage featuring a banner section, top-selling food items, and easy access to view all available foods.
