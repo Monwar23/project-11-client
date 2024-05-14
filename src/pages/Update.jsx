@@ -32,7 +32,7 @@ const Update = () => {
         const foodData = { food_name, food_image, food_category, price, Quantity, short_description, food_origin }
         console.log(foodData);
 
-        fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}`, {
+        fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}` ,{
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(foodData)
