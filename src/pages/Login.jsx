@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
@@ -9,10 +9,18 @@ import { Helmet } from "react-helmet";
 const Login = () => {
 
     const { signIn, googleLogin,
-        gitHubLogin, } = UseAuth()
+        gitHubLogin,user,loading } = UseAuth()
 
-    const location = useLocation()
-    const navigate = useNavigate()
+        const location = useLocation()
+        const navigate = useNavigate()
+
+        useEffect(()=>{
+            if(user){
+                navigate('/')
+            }
+        },[navigate,user])
+
+   
 
     const [showPassword, setShowPassword] = useState(false)
     const handleSubmit = async e => {
@@ -26,7 +34,7 @@ const Login = () => {
             toast.success('SignIn Successful!')
             setTimeout(() => {
                             navigate(location?.state ? location.state : '/')
-                        }, 3000)
+                        }, 2000)
         }
         catch (err) {
             console.log(err);
@@ -65,7 +73,7 @@ const Login = () => {
     }
 
 
-
+if(user || loading) return
 return (
     <div>
         <Helmet>

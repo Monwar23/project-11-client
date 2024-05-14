@@ -3,15 +3,22 @@ import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import UseAuth from "../Hooks/UseAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
 const Register = () => {
 
     const { createUser,googleLogin,
-        gitHubLogin,updateUserProfile,setUser } = UseAuth()
+        gitHubLogin,updateUserProfile,setUser,user,loading } = UseAuth()
     const location = useLocation()
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(user){
+            navigate('/')
+        }
+    },[navigate,user])
+
 
     
     const [showPassword, setShowPassword] = useState(false)
@@ -77,6 +84,9 @@ const Register = () => {
             toast.error(err.message)
         }
     }
+
+    
+if(user || loading) return
 
     return (
        <div>
