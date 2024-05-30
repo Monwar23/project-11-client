@@ -5,24 +5,22 @@ import { Helmet } from "react-helmet";
 const AllFood = () => {
     const [foods, setFoods] = useState([]);
     const [search, setSearch] = useState('');
-    const [sortOrder, setSortOrder] = useState('asc'); // State for sorting order
+    const [sortOrder, setSortOrder] = useState('asc'); 
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_APP_URL}/foods`)
             .then(res => res.json())
             .then(data => {
-                // Sort the foods based on sortOrder
                 const sortedData = data.sort((a, b) => sortOrder === 'asc' ? parseFloat(a.price) - parseFloat(b.price) : parseFloat(b.price) - parseFloat(a.price));
                 setFoods(sortedData);
             });
-    }, [sortOrder]); // Fetch and sort when sortOrder changes
+    }, [sortOrder]); 
 
     useEffect(() => {
         if (search !== '') {
             fetch(`${import.meta.env.VITE_APP_URL}/searchFoods?search=${search}`)
                 .then(res => res.json())
                 .then(data => {
-                    // Sort the foods based on sortOrder
                     const sortedData = data.sort((a, b) => sortOrder === 'asc' ? parseFloat(a.price) - parseFloat(b.price) : parseFloat(b.price) - parseFloat(a.price));
                     setFoods(sortedData);
                 });
@@ -34,7 +32,7 @@ const AllFood = () => {
                     setFoods(sortedData);
                 });
         }
-    }, [search, sortOrder]); // Fetch and sort when search or sortOrder changes
+    }, [search, sortOrder]);
 
     const handleSearch = e => {
         e.preventDefault();
