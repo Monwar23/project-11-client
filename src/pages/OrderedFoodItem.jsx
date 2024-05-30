@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import UseAuth from "../Hooks/UseAuth";
 import Swal from "sweetalert2";
 import { BsTrash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 
 
@@ -61,7 +62,8 @@ const OrderedFoodItem = () => {
             <div className="bg-cover h-32 bg-center mt-10 flex items-center justify-center rounded-xl opacity-85" style={{ backgroundImage: "url('https://i.ibb.co/9HLjhGV/pexels-solliefoto-299347.jpg')" }}>
                 <h2 className="text-rose-600 text-4xl font-bold">My Purchase Food Items</h2>
             </div>
-            <div className="my-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+            
+            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
                 {
                     foods.map((food, index) => (
                         <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
@@ -88,6 +90,13 @@ const OrderedFoodItem = () => {
                     )
                 }
             </div>
+            {foods.length?<Link to='/payment' className="flex justify-center mb-10">
+            <button className="text-rose-400 py-2 px-3 rounded-lg mb-3  hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400 block text-center">Pay</button>
+            </Link>:
+            <Link className="flex justify-center mb-10">
+            <button disabled className="text-rose-400 py-2 px-3 rounded-lg mb-3  hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400 block text-center">Pay</button>
+            </Link>
+            }
         </div>
     );
 };
