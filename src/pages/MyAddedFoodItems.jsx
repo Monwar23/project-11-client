@@ -23,7 +23,7 @@ const MyAddedFoodItems = () => {
             
     }, [user,control]);
 
-    const handleDelete = _id => {
+    const handleDelete = (_id) => {
         Swal.fire({
           title: "Are you sure?",
           text: "You won't be able to revert this!",
@@ -36,12 +36,12 @@ const MyAddedFoodItems = () => {
           if (result.isConfirmed) {
     
     
-            fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}`,{credentials:'include'},{
+            fetch(`${import.meta.env.VITE_APP_URL}/foods/${_id}`,{
               method:'DELETE'
             })
               .then(res => res.json())
               .then(data => {
-                // console.log(data);
+                console.log(data);
                 if (data.deletedCount > 0) {
                   Swal.fire({
                     title: "Deleted!",
