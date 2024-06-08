@@ -90,13 +90,6 @@ const OrderedFoodItem = () => {
                     )
                 }
             </div>
-            {foods.length?<Link to='/payment' className="flex justify-center mb-10">
-            <button className="text-rose-400 py-2 px-3 rounded-lg mb-3  hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400 block text-center">Pay</button>
-            </Link>:
-            <Link className="flex justify-center mb-10">
-            <button disabled className="text-rose-400 py-2 px-3 rounded-lg mb-3  hover:bg-rose-400 hover:text-white hover:border-none font-semibold border border-rose-400 block text-center">Pay</button>
-            </Link>
-            }
         </div>
     );
 };
