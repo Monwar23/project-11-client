@@ -13,7 +13,6 @@ import PrivateRoutes from "./PrivateRoutes";
 import Details from "../pages/Details";
 import Purchase from "../pages/Purchase";
 import Gallery from "../pages/Gallery";
-import Payment from "../pages/Payment";
 
 const router = createBrowserRouter([
     {
@@ -50,10 +49,7 @@ const router = createBrowserRouter([
             path:'/myPurchaseFoodItem',
             element:<PrivateRoutes><OrderedFoodItem></OrderedFoodItem></PrivateRoutes>
         },
-        {
-            path:'/payment',
-            element:<Payment></Payment>
-        },
+       
         {
             path:'/updateFood/:id',
             element:<PrivateRoutes><Update></Update></PrivateRoutes>,
